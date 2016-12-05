@@ -10,7 +10,7 @@
 import multiprocessing
 import time
 
-__version__ = '0.0.4'
+__version__ = '0.0.5'
 
 # Default timeout in seconds, for timed_call().
 DEFAULT_TIMEOUT = 4

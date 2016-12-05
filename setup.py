@@ -41,14 +41,22 @@ else:
             longdesc = defaultdesc
 
 
+shortdesc = 'Time python operations or enforce a time limit for calls.'
+try:
+    with open('DESC.txt', 'r') as f:
+        shortdesc = f.read()
+except FileNotFoundError:
+    pass
+
+
 setup(
     name='timedop',
-    version='0.0.4',
+    version='0.0.5',
     author='Christopher Welborn',
     author_email='cj@welbornprod.com',
     packages=['timedop'],
     url='http://pypi.python.org/pypi/TimedOp/',
-    description=open('DESC.txt').read(),
+    description=shortdesc,
     long_description=longdesc,
     keywords=('python module library 2 3 ...'),
     classifiers=[
