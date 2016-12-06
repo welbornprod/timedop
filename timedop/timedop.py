@@ -10,7 +10,7 @@
 import multiprocessing
 import time
 
-__version__ = '0.0.6'
+__version__ = '0.0.7'
 
 # Default timeout in seconds, for timed_call().
 DEFAULT_TIMEOUT = 4
@@ -126,8 +126,9 @@ class TimedOp(object):
         if not fmt:
             raise ValueError(msg)
         try:
+            # Ensure the fmt string will actually work.
             fmt.format(1.0)
-        except (IndexError, KeyError, ValueError):
+        except (AttributeError, IndexError, KeyError, ValueError):
             raise ValueError(msg)
         self.default_format = fmt
         return self

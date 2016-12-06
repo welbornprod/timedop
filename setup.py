@@ -51,7 +51,7 @@ except FileNotFoundError:
 
 setup(
     name='timedop',
-    version='0.0.6',
+    version='0.0.7',
     author='Christopher Welborn',
     author_email='cj@welbornprod.com',
     packages=['timedop'],
