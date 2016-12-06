@@ -10,7 +10,7 @@
 import multiprocessing
 import time
 
-__version__ = '0.0.5'
+__version__ = '0.0.6'
 
 # Default timeout in seconds, for timed_call().
 DEFAULT_TIMEOUT = 4
@@ -112,6 +112,25 @@ class TimedOp(object):
             # Update the diff value if this timer hasn't been stopped.
             self.diff = time.time() - self.timestart
         return self.diff
+
+    def set_format(self, fmt):
+        """ Set the default format string for this TimedOp. """
+        examplefmts = ('{}', '{:0.2f}', '{0}')
+        msg = ''.join((
+            'Invalid format, expecting simple float format ({fmts})',
+            ', got: {gotfmt!r}'
+        )).format(
+            fmts=', '.join(repr(s) for s in examplefmts),
+            gotfmt=fmt,
+        )
+        if not fmt:
+            raise ValueError(msg)
+        try:
+            fmt.format(1.0)
+        except (IndexError, KeyError, ValueError):
+            raise ValueError(msg)
+        self.default_format = fmt
+        return self
 
     @staticmethod
     def sleep(seconds):

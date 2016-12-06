@@ -89,28 +89,20 @@ method is called on ``__enter__``, and ``stop`` is called on
     # Prints the time elapsed while inside the `with` block.
     print(t)
 
-Methods:
-^^^^^^^^
+TimedOp Methods:
+^^^^^^^^^^^^^^^^
 
-elapsed
-'''''''
+-  ``elapsed``: Return the number of seconds since the ``TimedOp``
+   started.
 
-Return the number of seconds since the ``TimedOp`` started.
+-  ``set_format(fmt)``: Set the default format string for the elapsed
+   seconds and returns ``self``. Default: ``'{:0.2f}'``
 
-sleep(seconds)
-''''''''''''''
+-  ``sleep(seconds)``: Shortcut for ``time.sleep(seconds)``
 
-Shortcut for ``time.sleep(seconds)``
+-  ``start``: Starts the timer, and returns ``self``.
 
-start
-'''''
-
-Starts the timer, and returns ``self``.
-
-stop
-''''
-
-Stops the timer, and returns ``self``.
+-  ``stop``: Stops the timer, and returns ``self``.
 
 TimedOut
 ~~~~~~~~
@@ -125,38 +117,31 @@ about the timed function call such as:
 -  ``self.formatted``: A string representing all of the above
    information. Used for ``str(TimedOut)``.
 
-timed\_call(func, args=None, kwargs=None, timeout=DEFAULT\_TIMEOUT)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+timed\_call
+~~~~~~~~~~~
 
-Runs a function (``func``), and raises ``TimedOut`` if the function call
-takes more than ``timeout`` seconds. The default timeout is set to
+.. code:: python
+
+    timed_call(func, args=None, kwargs=None, timeout=DEFAULT_TIMEOUT)
+
+Calls a function (``func``), and raises ``TimedOut`` if the function
+call takes more than ``timeout`` seconds. The default timeout is set to
 ``timedop.DEFAULT_TIMEOUT`` (4 seconds).
 
 Returns the result from calling ``func(*args, **kwargs)`` unless it
 times out.
 
-Arguments
-^^^^^^^^^
+timed\_call Arguments
+^^^^^^^^^^^^^^^^^^^^^
 
-func
-''''
+-  ``func``: The function to call.
 
-The function to call.
+-  ``args``: A ``list``/``tuple`` of arguments to use when calling the
+   function (``func``).
 
-args
-''''
+-  ``kwargs``: A ``dict`` of keyword arguments to use when calling the
+   function (``func``).
 
-A ``list``/``tuple`` of arguments to use when calling the function
-(``func``).
-
-kwargs
-''''''
-
-A ``dict`` of keyword arguments to use when calling the function
-(``func``).
-
-timeout
-'''''''
-
-The number of seconds to wait before raising a ``TimedOut`` exception.
-This is set to ``timedop.DEFAULT_SECONDS`` by default (4 seconds).
+-  ``timeout``: The number of seconds to wait before raising a
+   ``TimedOut`` exception. This is set to ``timedop.DEFAULT_SECONDS`` by
+   default (4 seconds).

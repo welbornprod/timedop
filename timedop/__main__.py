@@ -27,7 +27,7 @@ if __name__ == '__main__':
     ))
 
     # Basic example.
-    t = TimedOp(label='Elapsed: ').start()
+    t = TimedOp(label='Elapsed: ').set_format('{:0.2f}s').start()
     print('Simulating some long operation.')
     busy_work(0)
     print(t.stop())
