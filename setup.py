@@ -58,7 +58,7 @@ setup(
     url='http://pypi.python.org/pypi/TimedOp/',
     description=shortdesc,
     long_description=longdesc,
-    keywords=('python module library 2 3 ...'),
+    keywords=('python module library 2 3 time operations timed call'),
     classifiers=[
         'License :: OSI Approved :: MIT License',
         'Operating System :: Microsoft :: Windows',
